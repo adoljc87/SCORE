@@ -1,3 +1,6 @@
+import pandas as pd
+import plotly.express as px
+
 def show_unique_values(df, col, transpose=True):
     """
     Displays unique values of a column in a formatted DataFrame.
