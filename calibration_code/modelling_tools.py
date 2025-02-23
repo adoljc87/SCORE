@@ -165,7 +165,7 @@ def create_deciles(df, continuous_variable, n_deciles=10):
     Returns:
         pd.DataFrame: DataFrame with an additional 'Decile' column.
     """
-    df = df.copy()  # Avoid modifying the original DataFrame
+    df = df.copy()  
     df["Decile"] = pd.qcut(df[continuous_variable], q=n_deciles, labels=False, duplicates="drop")
     return df
 
