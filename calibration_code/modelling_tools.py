@@ -151,3 +151,51 @@ def rename_low_density_categories(df, column, threshold, new_category="Otros"):
     df_copy[column] = df_copy[column].apply(lambda x: new_category if x in rare_categories else x)
 
     return df_copy
+
+
+def create_deciles(df, continuous_variable, n_deciles=10):
+    """
+    Divides a continuous variable into deciles and adds a 'Decile' column to the DataFrame.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing the data.
+        continuous_variable (str): Name of the continuous variable to be divided into deciles.
+        n_deciles (int): Number of deciles to create (default is 10).
+
+    Returns:
+        pd.DataFrame: DataFrame with an additional 'Decile' column.
+    """
+    df = df.copy()  # Avoid modifying the original DataFrame
+    df["Decile"] = pd.qcut(df[continuous_variable], q=n_deciles, labels=False, duplicates="drop")
+    return df
+
+
+def count_categories_by_decile(df, decile_col="Decile", target_col="Credit_Score"):
+    """
+    Counts the frequency of each category within each decile.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing the decile column and the categorical variable.
+        decile_col (str): Name of the decile column.
+        target_col (str): Name of the categorical variable to count.
+
+    Returns:
+        pd.DataFrame: Frequency table showing the number of cases per category in each decile.
+    """
+    return df.groupby([decile_col, target_col]).size().unstack(fill_value=0)
+
+
+def calculate_category_proportions(df, decile_col="Decile", target_col="Credit_Score"):
+    """
+    Computes the proportion of each category within each decile.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing the decile column and the categorical variable.
+        decile_col (str): Name of the decile column.
+        target_col (str): Name of the categorical variable to calculate proportions.
+
+    Returns:
+        pd.DataFrame: Table of proportions of each category within each decile.
+    """
+    count_table = count_categories_by_decile(df, decile_col, target_col)
+    return count_table.div(count_table.sum(axis=1), axis=0)  # Normalize by row
