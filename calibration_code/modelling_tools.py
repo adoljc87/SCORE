@@ -152,10 +152,9 @@ def rename_low_density_categories(df, column, threshold, new_category="Otros"):
 
     return df_copy
 
-
 def create_deciles(df, continuous_variable, n_deciles=10):
     """
-    Divides a continuous variable into deciles and adds a 'Decile' column to the DataFrame.
+    Divides a continuous variable into deciles and returns a DataFrame with decile labels.
 
     Parameters:
         df (pd.DataFrame): DataFrame containing the data.
@@ -163,11 +162,14 @@ def create_deciles(df, continuous_variable, n_deciles=10):
         n_deciles (int): Number of deciles to create (default is 10).
 
     Returns:
-        pd.DataFrame: DataFrame with an additional 'Decile' column.
+        pd.DataFrame: DataFrame with decile labels.
+        pd.DataFrame: Summary table with decile ranges, counts, and proportions.
     """
-    df = df.copy()  
+    df = df.copy()
     df["Decile"] = pd.qcut(df[continuous_variable], q=n_deciles, labels=False, duplicates="drop")
-    return df
+    decile_summary = df.groupby("Decile")[continuous_variable].agg(["min", "max", "count"])
+    decile_summary["Proportion"] = decile_summary["count"] / decile_summary["count"].sum()
+    return df, decile_summary
 
 
 def count_categories_by_decile(df, decile_col="Decile", target_col="Credit_Score"):
@@ -199,3 +201,30 @@ def calculate_category_proportions(df, decile_col="Decile", target_col="Credit_S
     """
     count_table = count_categories_by_decile(df, decile_col, target_col)
     return count_table.div(count_table.sum(axis=1), axis=0)  # Normalize by row
+
+
+def summarize_decile_analysis(df, continuous_variable, target_col="Credit_Score", n_deciles=10):
+    """
+    Combines decile summary, category counts, and category proportions into a single structure.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing the continuous variable and categorical target.
+        continuous_variable (str): Name of the continuous variable.
+        target_col (str): Name of the categorical target variable.
+        n_deciles (int): Number of deciles to create (default is 10).
+
+    Returns:
+        dict: Contains DataFrame with deciles and a combined analysis DataFrame.
+    """
+    df_deciles, decile_summary = create_deciles(df, continuous_variable, n_deciles)
+    category_counts = count_categories_by_decile(df_deciles, "Decile", target_col)
+    category_proportions = calculate_category_proportions(df_deciles, "Decile", target_col)
+
+    decile_analysis = pd.concat([decile_summary, category_counts, category_proportions], axis=1)
+    
+    analysis_summary = {
+        "df_deciles": df_deciles,
+        "decile_summary": decile_analysis,
+    }
+    
+    return analysis_summary
