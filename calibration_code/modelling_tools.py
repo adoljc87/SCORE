@@ -152,6 +152,8 @@ def rename_low_density_categories(df, column, threshold, new_category="Otros"):
 
     return df_copy
 
+import pandas as pd
+
 def create_deciles(df, continuous_variable, n_deciles=10):
     """
     Divides a continuous variable into deciles and returns a DataFrame with decile labels.
@@ -168,7 +170,8 @@ def create_deciles(df, continuous_variable, n_deciles=10):
     df = df.copy()
     df["Decile"] = pd.qcut(df[continuous_variable], q=n_deciles, labels=False, duplicates="drop")
     decile_summary = df.groupby("Decile")[continuous_variable].agg(["min", "max", "count"])
-    decile_summary["Proportion"] = decile_summary["count"] / decile_summary["count"].sum()
+    decile_summary.rename(columns={"min": "Decile_Min", "max": "Decile_Max", "count": "Decile_Count"}, inplace=True)
+    decile_summary["Decile_Proportion"] = decile_summary["Decile_Count"] / decile_summary["Decile_Count"].sum()
     return df, decile_summary
 
 
@@ -182,9 +185,11 @@ def count_categories_by_decile(df, decile_col="Decile", target_col="Credit_Score
         target_col (str): Name of the categorical variable to count.
 
     Returns:
-        pd.DataFrame: Frequency table showing the number of cases per category in each decile.
+        pd.DataFrame: Frequency table showing the number of cases per category in each decile with prefixed column names.
     """
-    return df.groupby([decile_col, target_col]).size().unstack(fill_value=0)
+    count_table = df.groupby([decile_col, target_col]).size().unstack(fill_value=0)
+    count_table = count_table.add_prefix("count_")
+    return count_table
 
 
 def calculate_category_proportions(df, decile_col="Decile", target_col="Credit_Score"):
@@ -197,10 +202,12 @@ def calculate_category_proportions(df, decile_col="Decile", target_col="Credit_S
         target_col (str): Name of the categorical variable to calculate proportions.
 
     Returns:
-        pd.DataFrame: Table of proportions of each category within each decile.
+        pd.DataFrame: Table of proportions of each category within each decile with prefixed column names.
     """
     count_table = count_categories_by_decile(df, decile_col, target_col)
-    return count_table.div(count_table.sum(axis=1), axis=0)  # Normalize by row
+    prop_table = count_table.div(count_table.sum(axis=1), axis=0)  # Normalize by row
+    prop_table = prop_table.add_prefix("prop_")
+    return prop_table
 
 
 def summarize_decile_analysis(df, continuous_variable, target_col="Credit_Score", n_deciles=10):
@@ -228,3 +235,4 @@ def summarize_decile_analysis(df, continuous_variable, target_col="Credit_Score"
     }
     
     return analysis_summary
+
