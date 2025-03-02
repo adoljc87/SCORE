@@ -236,3 +236,48 @@ def summarize_decile_analysis(df, continuous_variable, target_col="Credit_Score"
     
     return analysis_summary
 
+def group_deciles(df_deciles, group_map, new_col_name="Grouped_Decile"):
+    """
+    Groups deciles into larger categories based on a user-defined mapping.
+
+    Parameters:
+        df_deciles (pd.DataFrame): DataFrame containing the deciles column.
+        group_map (dict): Dictionary mapping decile numbers to group names.
+        new_col_name (str): Name of the new grouped column (default: "Grouped_Decile").
+
+    Returns:
+        pd.DataFrame: Updated DataFrame with the new grouped column.
+    """
+    df = df_deciles.copy()
+    df[new_col_name] = df["Decile"].map(group_map)
+    return df
+
+def summarize_grouped_deciles(df, grouped_col="Grouped_Decile", continuous_variable="Age", target_col="Credit_Score"):
+    """
+    Summarizes statistics for newly grouped deciles.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing the grouped deciles column.
+        grouped_col (str): Name of the grouped decile column.
+        continuous_variable (str): Name of the original continuous variable.
+        target_col (str): Name of the categorical target variable.
+
+    Returns:
+        pd.DataFrame: Summary statistics for the grouped deciles.
+    """
+    # Obtener los valores mínimos y máximos de la variable continua en cada grupo
+    grouped_summary = df.groupby(grouped_col)[continuous_variable].agg(["min", "max", "count"])
+    grouped_summary.rename(columns={"min": "Grouped_Min", "max": "Grouped_Max", "count": "Grouped_Count"}, inplace=True)
+
+    # Calcular la proporción de cada grupo respecto al total
+    grouped_summary["Grouped_Proportion"] = grouped_summary["Grouped_Count"] / grouped_summary["Grouped_Count"].sum()
+
+    # Calcular los conteos y proporciones por categoría usando las funciones existentes
+    category_counts = count_categories_by_decile(df, grouped_col, target_col)
+    category_proportions = calculate_category_proportions(df, grouped_col, target_col)
+
+    # Unir todas las tablas en un solo dataframe final
+    grouped_analysis = pd.concat([grouped_summary, category_counts, category_proportions], axis=1)
+
+    return grouped_analysis
+
