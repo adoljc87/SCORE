@@ -94,20 +94,6 @@ def plot_interactive_chart(
     configure_layout(fig, title, x_title, y_title, y2_title, width, height)
     return fig
 
-def plot_boxplot(df, x_col, y_col, title="Boxplot of Continuous Variable by Category"):
-    """
-    Generates an interactive boxplot to visualize the distribution of a continuous variable across categories.
-
-    Parameters:
-        df (pd.DataFrame): The dataset containing the variables.
-        x_col (str): The categorical variable (e.g., "Credit_Score").
-        y_col (str): The continuous variable (e.g., "Age").
-        title (str): Title of the chart.
-    """
-    fig = px.box(df, x=x_col, y=y_col, title=title, template="plotly_white") # points="all"
-
-    fig.show()
-
 
 
 
