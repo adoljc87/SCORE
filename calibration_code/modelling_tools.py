@@ -252,32 +252,35 @@ def group_deciles(df_deciles, group_map, new_col_name="Grouped_Decile"):
     df[new_col_name] = df["Decile"].map(group_map)
     return df
 
-def summarize_grouped_deciles(df, grouped_col="Grouped_Decile", continuous_variable="Age", target_col="Credit_Score"):
+
+def summarize_grouped_deciles(df, grouped_col="Grouped_Decile", continuous_variable="Age", target_col="Credit_Score", prefix="Grouped"):
     """
-    Summarizes statistics for newly grouped deciles.
+    Summarizes statistics for newly grouped deciles, ensuring consistency with the original decile summary structure.
 
     Parameters:
         df (pd.DataFrame): DataFrame containing the grouped deciles column.
         grouped_col (str): Name of the grouped decile column.
         continuous_variable (str): Name of the original continuous variable.
         target_col (str): Name of the categorical target variable.
+        prefix (str): Prefix to use for column names to differentiate from original deciles.
 
     Returns:
         pd.DataFrame: Summary statistics for the grouped deciles.
     """
     # Obtener los valores mínimos y máximos de la variable continua en cada grupo
     grouped_summary = df.groupby(grouped_col)[continuous_variable].agg(["min", "max", "count"])
-    grouped_summary.rename(columns={"min": "Grouped_Min", "max": "Grouped_Max", "count": "Grouped_Count"}, inplace=True)
+    grouped_summary.rename(columns={"min": f"{prefix}_Min", "max": f"{prefix}_Max", "count": f"{prefix}_Count"}, inplace=True)
 
     # Calcular la proporción de cada grupo respecto al total
-    grouped_summary["Grouped_Proportion"] = grouped_summary["Grouped_Count"] / grouped_summary["Grouped_Count"].sum()
+    grouped_summary[f"{prefix}_Proportion"] = grouped_summary[f"{prefix}_Count"] / grouped_summary[f"{prefix}_Count"].sum()
 
-    # Calcular los conteos y proporciones por categoría usando las funciones existentes
+    # Calcular conteos y proporciones por categoría usando funciones existentes
     category_counts = count_categories_by_decile(df, grouped_col, target_col)
     category_proportions = calculate_category_proportions(df, grouped_col, target_col)
 
     # Unir todas las tablas en un solo dataframe final
     grouped_analysis = pd.concat([grouped_summary, category_counts, category_proportions], axis=1)
 
-    return grouped_analysis
+    return grouped_analysis.reset_index()
+
 
