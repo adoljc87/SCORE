@@ -250,7 +250,7 @@ def group_deciles(df_deciles, continuous_variable, group_map):
         pd.DataFrame: Updated DataFrame with the new grouped column.
     """
     decile_col_name = f"{continuous_variable}_Decile"
-    grouped_col_name = f"Grouped_{continuous_variable}_Decile"
+    grouped_col_name = f"{continuous_variable}_Decile"
 
     df_grouped = df_deciles.copy()
     df_grouped[grouped_col_name] = df_grouped[decile_col_name].map(group_map)
@@ -279,6 +279,10 @@ def summarize_grouped_deciles(df_deciles, grouped_col, continuous_variable, targ
     """
     # Compute summary statistics for the continuous variable within each grouped decile
     stats = df_deciles.groupby(grouped_col)[continuous_variable].agg(["min", "max", "count"])
+
+    stats["Decile_Proportion"] = stats["count"] / stats["count"].sum()
+
+    stats.rename(columns = {'min':'Decile_Min', 'max':'Decile_Max', 'count':'Decile_Count'}, inplace = True)
 
     # Count occurrences of each category within each grouped decile
     counts = count_categories_by_decile(df_deciles, grouped_col, target_col)
