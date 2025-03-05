@@ -152,21 +152,21 @@ def rename_low_density_categories(df, column, threshold, new_category="Otros"):
 
     return df_copy
 
-def create_deciles(df, continuous_variable, n_deciles=10):
+def create_deciles(df, continuous_variable, decile_col_name, n_deciles=10):
     """
-    Divides a continuous variable into deciles and returns a DataFrame with decile labels.
+    Divides a continuous variable into deciles and adds a specified decile column.
 
     Parameters:
         df (pd.DataFrame): DataFrame containing the data.
         continuous_variable (str): Name of the continuous variable to be divided into deciles.
+        decile_col_name (str): Name of the new column to store decile labels.
         n_deciles (int): Number of deciles to create (default is 10).
 
     Returns:
-        pd.DataFrame: DataFrame with decile labels.
+        pd.DataFrame: Updated DataFrame with the decile column.
         pd.DataFrame: Summary table with decile ranges, counts, and proportions.
     """
     df = df.copy()
-    decile_col_name = f"{continuous_variable}_Decile"
     df[decile_col_name] = pd.qcut(df[continuous_variable], q=n_deciles, labels=False, duplicates="drop")
 
     decile_summary = df.groupby(decile_col_name)[continuous_variable].agg(["min", "max", "count"])
@@ -189,7 +189,7 @@ def count_categories_by_decile(df, decile_col, target_col):
         pd.DataFrame: Frequency table showing the number of cases per category in each decile.
     """
     count_table = df.groupby([decile_col, target_col]).size().unstack(fill_value=0)
-    count_table.columns = [f"count_{col}" for col in count_table.columns]  # Prefijo para claridad
+    count_table.columns = [f"count_{col}" for col in count_table.columns]
     return count_table
 
 
@@ -207,25 +207,25 @@ def calculate_category_proportions(df, decile_col, target_col):
     """
     count_table = count_categories_by_decile(df, decile_col, target_col)
     prop_table = count_table.div(count_table.sum(axis=1), axis=0)
-    prop_table.columns = [col.replace("count_", "prop_") for col in count_table.columns]  # Prefijo corregido
+    prop_table.columns = [col.replace("count_", "prop_") for col in count_table.columns]
     return prop_table
 
 
-def summarize_decile_analysis(df, continuous_variable, target_col, n_deciles=10):
+def summarize_decile_analysis(df, continuous_variable, decile_col_name, target_col, n_deciles=10):
     """
     Combines decile summary, category counts, and category proportions into a single structure.
 
     Parameters:
         df (pd.DataFrame): DataFrame containing the continuous variable and categorical target.
         continuous_variable (str): Name of the continuous variable.
+        decile_col_name (str): Name of the decile column.
         target_col (str): Name of the categorical target variable.
         n_deciles (int): Number of deciles to create (default is 10).
 
     Returns:
         dict: Contains DataFrame with deciles and a combined analysis DataFrame.
     """
-    df_deciles, decile_summary = create_deciles(df, continuous_variable, n_deciles)
-    decile_col_name = f"{continuous_variable}_Decile"
+    df_deciles, decile_summary = create_deciles(df, continuous_variable, decile_col_name, n_deciles)
 
     category_counts = count_categories_by_decile(df_deciles, decile_col_name, target_col)
     category_proportions = calculate_category_proportions(df_deciles, decile_col_name, target_col)
@@ -237,21 +237,20 @@ def summarize_decile_analysis(df, continuous_variable, target_col, n_deciles=10)
         "decile_summary": decile_analysis,
     }
 
-def group_deciles(df_deciles, continuous_variable, group_map):
+
+def group_deciles(df_deciles, decile_col_name, grouped_col_name, group_map):
     """
     Maps deciles into larger groups based on a user-defined mapping.
 
     Parameters:
         df_deciles (pd.DataFrame): DataFrame containing the decile column.
-        continuous_variable (str): Name of the continuous variable used for deciles.
+        decile_col_name (str): Name of the column that stores decile labels.
+        grouped_col_name (str): Name of the new column to store grouped decile labels.
         group_map (dict): Dictionary mapping decile numbers to group names.
 
     Returns:
         pd.DataFrame: Updated DataFrame with the new grouped column.
     """
-    decile_col_name = f"{continuous_variable}_Decile"
-    grouped_col_name = f"{continuous_variable}_Decile"
-
     df_grouped = df_deciles.copy()
     df_grouped[grouped_col_name] = df_grouped[decile_col_name].map(group_map)
 
