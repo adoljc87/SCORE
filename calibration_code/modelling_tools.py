@@ -152,9 +152,9 @@ def rename_low_density_categories(df, column, threshold, new_category="Otros"):
 
     return df_copy
 
-def create_deciles(df, continuous_variable, decile_col_name, n_deciles=10):
+def assign_deciles(df, continuous_variable, decile_col_name, n_deciles=10):
     """
-    Divides a continuous variable into deciles and adds a specified decile column.
+    Assigns deciles to a continuous variable and adds a specified decile column.
 
     Parameters:
         df (pd.DataFrame): DataFrame containing the data.
@@ -164,16 +164,54 @@ def create_deciles(df, continuous_variable, decile_col_name, n_deciles=10):
 
     Returns:
         pd.DataFrame: Updated DataFrame with the decile column.
-        pd.DataFrame: Summary table with decile ranges, counts, and proportions.
     """
     df = df.copy()
     df[decile_col_name] = pd.qcut(df[continuous_variable], q=n_deciles, labels=False, duplicates="drop")
+    return df
 
-    decile_summary = df.groupby(decile_col_name)[continuous_variable].agg(["min", "max", "count"])
-    decile_summary.rename(columns={"min": "Decile_Min", "max": "Decile_Max", "count": "Decile_Count"}, inplace=True)
-    decile_summary["Decile_Proportion"] = decile_summary["Decile_Count"] / decile_summary["Decile_Count"].sum()
 
-    return df, decile_summary
+def statistics_by_decile(df, decile_col_name, continuous_variable):
+    """
+    Computes min, max, and count for each decile.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing the decile column and the continuous variable.
+        decile_col_name (str): Name of the decile column.
+        continuous_variable (str): Name of the continuous variable.
+
+    Returns:
+        pd.DataFrame: Summary table with min, max, and count per decile.
+    """
+    return df.groupby(decile_col_name)[continuous_variable].agg(["min", "max", "count"])
+
+
+def rename_decile_summary(decile_summary, prefix="Decile_"):
+    """
+    Renames columns in a decile summary table to standardized names.
+
+    Parameters:
+        decile_summary (pd.DataFrame): Decile summary with min, max, and count.
+        prefix (str): Prefix to apply to column names (default: "Decile_").
+
+    Returns:
+        pd.DataFrame: Renamed decile summary.
+    """
+    return decile_summary.rename(columns={"min": f"{prefix}Min", "max": f"{prefix}Max", "count": f"{prefix}Count"})
+
+
+def calculate_decile_proportions(decile_summary, count_col="Decile_Count", proportion_col="Decile_Proportion"):
+    """
+    Computes proportions for each decile.
+
+    Parameters:
+        decile_summary (pd.DataFrame): Decile summary containing count values.
+        count_col (str): Name of the column containing count values (default: "Decile_Count").
+        proportion_col (str): Name of the new proportion column (default: "Decile_Proportion").
+
+    Returns:
+        pd.Series: Decile proportions.
+    """
+    return decile_summary[count_col] / decile_summary[count_col].sum()
 
 
 def count_categories_by_decile(df, decile_col, target_col):
@@ -188,9 +226,21 @@ def count_categories_by_decile(df, decile_col, target_col):
     Returns:
         pd.DataFrame: Frequency table showing the number of cases per category in each decile.
     """
-    count_table = df.groupby([decile_col, target_col]).size().unstack(fill_value=0)
-    count_table.columns = [f"count_{col}" for col in count_table.columns]
-    return count_table
+    return df.groupby([decile_col, target_col]).size().unstack(fill_value=0)
+
+
+def rename_count_columns(count_df, prefix="count_"):
+    """
+    Renames count columns by adding a prefix.
+
+    Parameters:
+        count_df (pd.DataFrame): DataFrame with category counts.
+        prefix (str): Prefix to apply to column names (default: "count_").
+
+    Returns:
+        pd.DataFrame: DataFrame with renamed columns.
+    """
+    return count_df.rename(columns={col: f"{prefix}{col}" for col in count_df.columns})
 
 
 def calculate_category_proportions(df, decile_col, target_col):
@@ -206,9 +256,21 @@ def calculate_category_proportions(df, decile_col, target_col):
         pd.DataFrame: Table of proportions of each category within each decile.
     """
     count_table = count_categories_by_decile(df, decile_col, target_col)
-    prop_table = count_table.div(count_table.sum(axis=1), axis=0)
-    prop_table.columns = [col.replace("count_", "prop_") for col in count_table.columns]
-    return prop_table
+    return count_table.div(count_table.sum(axis=1), axis=0)
+
+
+def rename_prop_columns(prop_df, prefix="prop_"):
+    """
+    Renames proportion columns by adding a prefix.
+
+    Parameters:
+        prop_df (pd.DataFrame): DataFrame with category proportions.
+        prefix (str): Prefix to apply to column names (default: "prop_").
+
+    Returns:
+        pd.DataFrame: DataFrame with renamed columns.
+    """
+    return prop_df.rename(columns={col: f"{prefix}{col}" for col in prop_df.columns})
 
 
 def summarize_decile_analysis(df, continuous_variable, decile_col_name, target_col, n_deciles=10):
@@ -225,11 +287,18 @@ def summarize_decile_analysis(df, continuous_variable, decile_col_name, target_c
     Returns:
         dict: Contains DataFrame with deciles and a combined analysis DataFrame.
     """
-    df_deciles, decile_summary = create_deciles(df, continuous_variable, decile_col_name, n_deciles)
+    df_deciles = assign_deciles(df, continuous_variable, decile_col_name, n_deciles)
+    decile_summary = statistics_by_decile(df_deciles, decile_col_name, continuous_variable)
 
-    category_counts = count_categories_by_decile(df_deciles, decile_col_name, target_col)
-    category_proportions = calculate_category_proportions(df_deciles, decile_col_name, target_col)
+    # Renombrar y calcular proporciones
+    decile_summary = rename_decile_summary(decile_summary)
+    decile_summary["Decile_Proportion"] = calculate_decile_proportions(decile_summary)
 
+    # Obtener conteos y proporciones por categoría
+    category_counts = rename_count_columns(count_categories_by_decile(df_deciles, decile_col_name, target_col))
+    category_proportions = rename_prop_columns(calculate_category_proportions(df_deciles, decile_col_name, target_col))
+
+    # Combinar resultados
     decile_analysis = pd.concat([decile_summary, category_counts, category_proportions], axis=1)
 
     return {
@@ -253,16 +322,16 @@ def group_deciles(df_deciles, decile_col_name, grouped_col_name, group_map):
     """
     df_grouped = df_deciles.copy()
     df_grouped[grouped_col_name] = df_grouped[decile_col_name].map(group_map)
-
     return df_grouped
 
-def summarize_grouped_deciles(df_deciles, grouped_col, continuous_variable, target_col, prefix="Grouped_"):
+
+def summarize_grouped_deciles(df_grouped, grouped_col, continuous_variable, target_col, prefix="Grouped_"):
     """
     Summarizes statistics for newly grouped deciles, including numerical ranges, category counts, 
     and category proportions.
 
     Parameters:
-        df_deciles (pd.DataFrame): DataFrame containing the grouped decile column.
+        df_grouped (pd.DataFrame): DataFrame containing the grouped decile column.
         grouped_col (str): Name of the column containing the grouped decile categories.
         continuous_variable (str): Name of the original continuous variable.
         target_col (str): Name of the categorical target variable.
@@ -276,22 +345,14 @@ def summarize_grouped_deciles(df_deciles, grouped_col, continuous_variable, targ
             - 'proportions' (pd.DataFrame): Proportion of each category within each grouped decile.
             - 'df' (pd.DataFrame): Final consolidated table with all the above information.
     """
-    # Compute summary statistics for the continuous variable within each grouped decile
-    stats = df_deciles.groupby(grouped_col)[continuous_variable].agg(["min", "max", "count"])
+    stats = statistics_by_decile(df_grouped, grouped_col, continuous_variable)
+    stats = rename_decile_summary(stats, prefix)
+    stats[f"{prefix}Proportion"] = calculate_decile_proportions(stats, f"{prefix}Count", f"{prefix}Proportion")
 
-    stats["Decile_Proportion"] = stats["count"] / stats["count"].sum()
+    counts = rename_count_columns(count_categories_by_decile(df_grouped, grouped_col, target_col))
+    proportions = rename_prop_columns(calculate_category_proportions(df_grouped, grouped_col, target_col))
 
-    stats.rename(columns = {'min':'Decile_Min', 'max':'Decile_Max', 'count':'Decile_Count'}, inplace = True)
-
-    # Count occurrences of each category within each grouped decile
-    counts = count_categories_by_decile(df_deciles, grouped_col, target_col)
-
-    # Compute category proportions within each grouped decile
-    proportions = calculate_category_proportions(df_deciles, grouped_col, target_col)
-
-    # Concatenate all the computed dataframes into a final summary
     df_final = pd.concat([stats, counts, proportions], axis=1)
-    df_final.columns = [prefix + col for col in df_final.columns]  # Apply prefix to columns
 
     return {
         "statistics": stats,
