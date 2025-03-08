@@ -1,5 +1,6 @@
 import pandas as pd
 import plotly.express as px
+import numpy as np
 
 def show_unique_values(df, col, transpose=True):
     """
@@ -360,6 +361,140 @@ def summarize_grouped_deciles(df_grouped, grouped_col, continuous_variable, targ
         "proportions": proportions,
         "df": df_final
     }
+
+# para cálculo de woes binarios:
+
+def calculate_distribution(df, bad_col, good_col):
+    """
+    Computes the proportion of bads and goods for each category.
+    
+    Parameters:
+        df (pd.DataFrame): DataFrame containing category counts.
+        bad_col (str): Column name with "bad" counts.
+        good_col (str): Column name with "good" counts.
+    
+    Returns:
+        pd.DataFrame: DataFrame with additional columns for bad and good distributions.
+    """
+    df = df.copy()
+    total_bad = df[bad_col].sum()
+    total_good = df[good_col].sum()
+
+    df["Dist_Bad"] = df[bad_col] / total_bad
+    df["Dist_Good"] = df[good_col] / total_good
+
+    return df
+
+
+def calculate_woe(df):
+    """
+    Computes Weight of Evidence (WOE) for each category.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing "Dist_Bad" and "Dist_Good".
+
+    Returns:
+        pd.DataFrame: DataFrame with WOE values.
+    """
+    df = df.copy()
+    
+    # Avoid division by zero
+    df["Dist_Bad"] = df["Dist_Bad"].replace(0, 1e-10)
+    df["Dist_Good"] = df["Dist_Good"].replace(0, 1e-10)
+
+    df["WOE"] = np.log(df["Dist_Good"] / df["Dist_Bad"])
+    
+    return df
+
+
+def rename_woe_summary(df, prefix="WOE_"):
+    """
+    Renames WOE-related columns to include a prefix.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing WOE values.
+        prefix (str): Prefix to add to column names (default is "WOE_").
+
+    Returns:
+        pd.DataFrame: DataFrame with renamed columns.
+    """
+    rename_dict = {
+        "Dist_Bad": f"{prefix}Dist_Bad",
+        "Dist_Good": f"{prefix}Dist_Good",
+        "WOE": f"{prefix}WOE",
+    }
+    
+    return df.rename(columns=rename_dict)
+
+
+def compute_woe_for_deciles(df_summary, category_col, bad_col, good_col):
+    """
+    Computes WOE for a decile summary table.
+
+    Parameters:
+        df_summary (pd.DataFrame): Summary table with category-wise counts.
+        category_col (str): Name of the categorical column (e.g., decile).
+        bad_col (str): Name of the column with "bad" counts.
+        good_col (str): Name of the column with "good" counts.
+
+    Returns:
+        pd.DataFrame: Summary table with WOE values.
+    """
+    df = df_summary.copy()
+    df = calculate_distribution(df, bad_col, good_col)
+    df = calculate_woe(df)
+    df = rename_woe_summary(df, prefix="Decile_")
+
+    return df[[category_col, "Decile_WOE"]]
+
+
+def compute_woe_for_grouped_deciles(df_summary, category_col, bad_col, good_col):
+    """
+    Computes WOE for grouped decile summary table.
+
+    Parameters:
+        df_summary (pd.DataFrame): Summary table with grouped deciles.
+        category_col (str): Name of the grouped decile column.
+        bad_col (str): Name of the column with "bad" counts.
+        good_col (str): Name of the column with "good" counts.
+
+    Returns:
+        pd.DataFrame: Summary table with WOE values.
+    """
+    df = df_summary.copy()
+    df = calculate_distribution(df, bad_col, good_col)
+    df = calculate_woe(df)
+    df = rename_woe_summary(df, prefix="Grouped_")
+
+    return df[[category_col, "Grouped_WOE"]]
+
+
+def compute_odds_ratio(model_result, variable_name, description):
+    """
+    Computes the Odds Ratio and interprets its impact on the probability of being in a higher category.
+
+    Parameters:
+        model_result (OrderedModelResults): The fitted ordinal logistic regression model.
+        variable_name (str): The name of the independent variable.
+        description (str): A descriptive label for the variable (e.g., "Age", "Age_Decile").
+
+    Returns:
+        dict: A dictionary with the odds ratio and interpretation.
+    """
+    if variable_name not in model_result.params:
+        raise ValueError(f"Variable '{variable_name}' not found in the model parameters.")
+
+    odds_ratio = np.exp(model_result.params[variable_name])
+    odds_percentage = (odds_ratio - 1) * 100
+
+    interpretation = (
+        f"Odds Ratio de {description}: {odds_ratio:.2f}.\n"
+        f"Por cada unidad adicional en '{description}', la probabilidad de estar en una categoría superior "
+        f"aumenta en {round(odds_percentage, 2)}%."
+    )
+
+    return {"odds_ratio": odds_ratio, "odds_percentage": odds_percentage, "interpretation": interpretation}
+
 
 
 
