@@ -1,7 +1,6 @@
 import plotly.graph_objects as go
 import plotly.express as px
 
-
 def add_trace_to_figure(fig, df, x_column, y_column, chart_type, secondary_y, custom_colors):
     """
     Adds a line or bar trace to a Plotly figure.
@@ -92,6 +91,91 @@ def plot_interactive_chart(
         add_trace_to_figure(fig, df, x_column, y_col, chart_type, sec_y, custom_colors)
     
     configure_layout(fig, title, x_title, y_title, y2_title, width, height)
+    return fig
+
+
+def sort_dataframe(df, x_column, y_column, order="none"):
+    """
+    Sorts a DataFrame based on a specific column.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing the data.
+        x_column (str): Column to use as x-axis categories.
+        y_column (str): Column used for sorting.
+        order (str, optional): Sorting order. Options:
+            - "asc" (ascending order)
+            - "desc" (descending order)
+            - "none" (no sorting, default)
+
+    Returns:
+        pd.DataFrame: Sorted DataFrame.
+    """
+    if order == "asc":
+        df = df.sort_values(by=y_column, ascending=True)
+    elif order == "desc":
+        df = df.sort_values(by=y_column, ascending=False)
+    return df
+
+
+def plot_categorical_proportions(df, x_column, y_columns, stacked=False, 
+                                 title="Proporción de Categoría por Variable", 
+                                 x_title="Categoría", y_title="Proporción", 
+                                 legend_title="Grupo", colors=None, 
+                                 width=1000, height=600, sort_order="none", sort_by=None):
+    """
+    Plots categorical proportions using Plotly.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing proportion data.
+        x_column (str): Column name to use as x-axis categories.
+        y_columns (list): List of column names to use as y-axis series.
+        stacked (bool, optional): Whether to stack bars. Defaults to False.
+        title (str, optional): Title of the plot. Defaults to "Proporción de Categoría por Variable".
+        x_title (str, optional): Label for x-axis. Defaults to "Categoría".
+        y_title (str, optional): Label for y-axis. Defaults to "Proporción".
+        legend_title (str, optional): Title of the legend. Defaults to "Grupo".
+        colors (dict, optional): Dictionary mapping column names to colors. Defaults to None.
+        width (int, optional): Width of the figure. Defaults to 1000.
+        height (int, optional): Height of the figure. Defaults to 600.
+        sort_order (str, optional): Sorting order ("asc", "desc", "none"). Defaults to "none".
+        sort_by (str, optional): Column name to sort by (should be in y_columns). Defaults to None.
+
+    Returns:
+        go.Figure: Plotly figure object.
+    """
+    # Aplicar ordenamiento si es necesario
+    if sort_by and sort_by in y_columns:
+        df = sort_dataframe(df, x_column, sort_by, sort_order)
+
+    fig = go.Figure()
+
+    for col in y_columns:
+        fig.add_trace(go.Bar(
+            x=df[x_column], 
+            y=df[col], 
+            name=col, 
+            marker_color=colors.get(col) if colors else None
+        ))
+
+    fig.update_layout(
+        barmode="stack" if stacked else "group",
+        title=title,
+        xaxis_title=x_title,
+        yaxis_title=y_title,
+        legend_title=legend_title,
+        width=width,
+        height=height,
+        xaxis=dict(tickangle=45),
+        template="plotly_white",
+        legend=dict(
+            orientation="h",    
+            yanchor="bottom",   
+            y=-0.3,             
+            xanchor="center",   
+            x=0.5               
+        )
+    )
+
     return fig
 
 

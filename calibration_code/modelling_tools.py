@@ -495,6 +495,75 @@ def compute_odds_ratio(model_result, variable_name, description):
 
     return {"odds_ratio": odds_ratio, "odds_percentage": odds_percentage, "interpretation": interpretation}
 
+def count_by_category(df, x_columns, y_column):
+    """
+    Computes the count of occurrences of x_columns grouped by a single categorical y_column.
+
+    Parameters:
+        df (pd.DataFrame): The input DataFrame.
+        x_columns (list): List of categorical columns whose counts will be aggregated.
+        y_column (str): Name of the categorical variable to group by.
+
+    Returns:
+        pd.DataFrame: A DataFrame with counts of x_columns grouped by y_column.
+    """
+    if not all(col in df.columns for col in x_columns + [y_column]):
+        raise ValueError("One or more specified columns are not present in the DataFrame.")
+    
+    return df.groupby(y_column)[x_columns].sum().T
+
+def proportions_by_category(counts):
+    """
+    Computes proportions for each category by normalizing the counts.
+
+    Parameters:
+        counts (pd.DataFrame): A DataFrame with counts.
+
+    Returns:
+        pd.DataFrame: A DataFrame with proportions for each category.
+    """
+    return counts.div(counts.sum(axis=1), axis=0)
+
+def rename_summary_columns(df, prefix):
+    """
+    Renames the columns of a DataFrame by adding a specified prefix.
+
+    Parameters:
+        df (pd.DataFrame): The input DataFrame.
+        prefix (str): The prefix to add to each column name.
+
+    Returns:
+        pd.DataFrame: A DataFrame with renamed columns.
+    """
+    return df.rename(columns=lambda col: f"{prefix}{col}")
+
+def counts_and_proportions_by_category(df, x_columns, y_column, count_prefix="count_", prop_prefix="prop_"):
+    """
+    Computes both count and proportion summaries for x_columns grouped by a single categorical y_column.
+
+    Parameters:
+        df (pd.DataFrame): The input DataFrame.
+        x_columns (list): List of categorical columns whose counts will be aggregated.
+        y_column (str): Name of the categorical variable to group by.
+        count_prefix (str, optional): Prefix for count columns. Defaults to "count_".
+        prop_prefix (str, optional): Prefix for proportion columns. Defaults to "prop_".
+
+    Returns:
+        dict: Dictionary containing:
+            - 'counts': DataFrame with count summaries.
+            - 'proportions': DataFrame with proportion summaries.
+            - 'summary': Concatenated DataFrame of counts and proportions.
+    """
+    counts = count_by_category(df, x_columns, y_column)
+    proportions = proportions_by_category(counts)
+
+    counts = rename_summary_columns(counts, count_prefix)
+    proportions = rename_summary_columns(proportions, prop_prefix)
+
+    summary = pd.concat([counts, proportions], axis=1)
+
+    return {'counts': counts, 'proportions': proportions, 'summary': summary}
+
 
 
 
