@@ -495,7 +495,7 @@ def compute_odds_ratio(model_result, variable_name, description):
 
     return {"odds_ratio": odds_ratio, "odds_percentage": odds_percentage, "interpretation": interpretation}
 
-def count_by_category(df, x_columns, y_column):
+def count_by_category(df, x_columns, y_column): 
     """
     Computes the count of occurrences of x_columns grouped by a single categorical y_column.
 
