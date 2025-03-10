@@ -24,3 +24,22 @@ def g(df, decimals=2):
     """
     format_str = f'{{:,.{decimals}f}}'
     return df.apply(lambda col: col.apply(lambda x: format_str.format(x) if pd.api.types.is_numeric_dtype(col) else x))
+
+
+def describe_dataset(metrics, separator_length=50):
+    """
+    Prints key summary statistics based on a dictionary of metrics.
+
+    Parameters:
+    -----------
+    metrics : dict
+        Dictionary where keys are description labels and values are the precomputed metric values.
+    
+    separator_length : int, optional
+        Number of dashes used as a separator (default: 50).
+    """
+    separator = "-" * separator_length
+    for label, value in metrics.items():
+        print(separator)
+        print(f"{label}: {value}")
+    print(separator)
