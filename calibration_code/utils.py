@@ -25,6 +25,21 @@ def g(df, decimals=2):
     format_str = f'{{:,.{decimals}f}}'
     return df.apply(lambda col: col.apply(lambda x: format_str.format(x) if pd.api.types.is_numeric_dtype(col) else x))
 
+def format_number(n):
+    """
+    Formats a number with thousand separators.
+
+    Parameters:
+    -----------
+    n : int
+        The number to format.
+
+    Returns:
+    --------
+    str
+        The formatted number as a string.
+    """
+    return f"{n:,}"
 
 def describe_dataset(metrics, separator_length=50):
     """
