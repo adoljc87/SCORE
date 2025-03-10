@@ -8064,7 +8064,7 @@ Filas Duplicadas: 0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>El número de tarjetas de crédito va desde 0 a 10.</p>
+<p>El número de tarjetas de crédito va desde 0 a 11.</p>
 <p>La distribución del número de tarjetas de crédito es relativamente simétrica, con una media alrededor de 6.</p>
 </div>
 </div>
@@ -8077,6 +8077,68 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_14.html" width="920px"></iframe>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>count</th>
+<th>mean</th>
+<th>std</th>
+<th>min</th>
+<th>15%</th>
+<th>25%</th>
+<th>50%</th>
+<th>75%</th>
+<th>90%</th>
+<th>95%</th>
+<th>99%</th>
+<th>max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Num_Credit_Card</th>
+<td>100,000</td>
+<td>6</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -8109,7 +8171,7 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_15.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_16.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -8202,8 +8264,262 @@ Filas Duplicadas: 0
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_17.html" width="920px"></iframe>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">PermissionError</span>                           Traceback (most recent call last)
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\IPython\core\formatters.py:984</span>, in <span class="ansi-cyan-fg">IPythonDisplayFormatter.__call__</span><span class="ansi-blue-intense-fg ansi-bold">(self, obj)</span>
+<span class="ansi-green-fg">    982</span> method <span style="color: rgb(98,98,98)">=</span> get_real_method(obj, <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>print_method)
+<span class="ansi-green-fg">    983</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> method <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 984</span>     <span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    985</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\basedatatypes.py:833</span>, in <span class="ansi-cyan-fg">BaseFigure._ipython_display_</span><span class="ansi-blue-intense-fg ansi-bold">(self)</span>
+<span class="ansi-green-fg">    830</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,0,255)">plotly</span><span class="ansi-bold" style="color: rgb(0,0,255)">.</span><span class="ansi-bold" style="color: rgb(0,0,255)">io</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,0,255)">pio</span>
+<span class="ansi-green-fg">    832</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> pio<span style="color: rgb(98,98,98)">.</span>renderers<span style="color: rgb(98,98,98)">.</span>render_on_display <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> pio<span style="color: rgb(98,98,98)">.</span>renderers<span style="color: rgb(98,98,98)">.</span>default:
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 833</span>     <span class="ansi-yellow-bg">pio</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">show</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    834</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">    835</span>     <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(0,135,0)">repr</span>(<span style="color: rgb(0,135,0)">self</span>))
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\io\_renderers.py:417</span>, in <span class="ansi-cyan-fg">show</span><span class="ansi-blue-intense-fg ansi-bold">(fig, renderer, validate, **kwargs)</span>
+<span class="ansi-green-fg">    414</span> fig_dict <span style="color: rgb(98,98,98)">=</span> validate_coerce_fig_to_dict(fig, validate)
+<span class="ansi-green-fg">    416</span> <span style="color: rgb(95,135,135)"># Mimetype renderers</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 417</span> bundle <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">renderers</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_build_mime_bundle</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fig_dict</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">renderers_string</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">renderer</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    418</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> bundle:
+<span class="ansi-green-fg">    419</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> ipython_display:
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\io\_renderers.py:325</span>, in <span class="ansi-cyan-fg">RenderersConfig._build_mime_bundle</span><span class="ansi-blue-intense-fg ansi-bold">(self, fig_dict, renderers_string, **kwargs)</span>
+<span class="ansi-green-fg">    322</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">hasattr</span>(renderer, k):
+<span class="ansi-green-fg">    323</span>                 <span style="color: rgb(0,135,0)">setattr</span>(renderer, k, v)
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 325</span>         bundle<span style="color: rgb(98,98,98)">.</span>update(<span class="ansi-yellow-bg">renderer</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">to_mimebundle</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fig_dict</span><span class="ansi-yellow-bg">)</span>)
+<span class="ansi-green-fg">    327</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> bundle
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\io\_base_renderers.py:547</span>, in <span class="ansi-cyan-fg">IFrameRenderer.to_mimebundle</span><span class="ansi-blue-intense-fg ansi-bold">(self, fig_dict)</span>
+<span class="ansi-green-fg">    544</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> isdir(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>html_directory):
+<span class="ansi-green-fg">    545</span>                 <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 547</span>         <span class="ansi-yellow-bg">write_html</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    548</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">fig_dict</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    549</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    550</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">config</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">config</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    551</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">auto_play</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">auto_play</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    552</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">include_plotlyjs</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">include_plotlyjs</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    553</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">include_mathjax</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">cdn</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    554</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">auto_open</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">False</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    555</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">post_script</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">post_script</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    556</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">animation_opts</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">animation_opts</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    557</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">default_width</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">100</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">%</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    558</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">default_height</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">525</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    559</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">validate</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">False</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    560</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    562</span>         <span style="color: rgb(95,135,135)"># Build IFrame</span>
+<span class="ansi-green-fg">    563</span>         iframe_html <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">"""</span><span class="ansi-bold" style="color: rgb(175,95,0)">\</span>
+<span class="ansi-green-fg">    564</span> <span style="color: rgb(175,0,0)">&lt;iframe</span>
+<span class="ansi-green-fg">    565</span> <span style="color: rgb(175,0,0)">    scrolling=</span><span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">no</span><span style="color: rgb(175,0,0)">"</span>
+<span class="ansi-green-intense-fg ansi-bold">   (...)</span>
+<span class="ansi-green-fg">    573</span>             width<span style="color: rgb(98,98,98)">=</span>iframe_width, height<span style="color: rgb(98,98,98)">=</span>iframe_height, src<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>build_url(filename)
+<span class="ansi-green-fg">    574</span>         )
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\io\_html.py:509</span>, in <span class="ansi-cyan-fg">write_html</span><span class="ansi-blue-intense-fg ansi-bold">(fig, file, config, auto_play, include_plotlyjs, include_mathjax, post_script, full_html, animation_opts, validate, default_width, default_height, auto_open, div_id)</span>
+<span class="ansi-green-fg">    506</span> <span style="color: rgb(95,135,135)"># Write HTML string</span>
+<span class="ansi-green-fg">    507</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> path <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">    508</span>     <span style="color: rgb(95,135,135)"># To use a different file encoding, pass a file descriptor</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 509</span>     <span class="ansi-yellow-bg">path</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">write_text</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">html_str</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">utf-8</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    510</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">    511</span>     file<span style="color: rgb(98,98,98)">.</span>write(html_str)
+
+File <span class="ansi-green-intense-fg ansi-bold">C:\Program Files\Python312\Lib\pathlib.py:1047</span>, in <span class="ansi-cyan-fg">Path.write_text</span><span class="ansi-blue-intense-fg ansi-bold">(self, data, encoding, errors, newline)</span>
+<span class="ansi-green-fg">   1044</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">TypeError</span>(<span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">data must be str, not </span><span class="ansi-bold" style="color: rgb(175,95,135)">%s</span><span style="color: rgb(175,0,0)">'</span> <span style="color: rgb(98,98,98)">%</span>
+<span class="ansi-green-fg">   1045</span>                     data<span style="color: rgb(98,98,98)">.</span><span style="color: rgb(0,0,135)">__class__</span><span style="color: rgb(98,98,98)">.</span><span style="color: rgb(0,0,135)">__name__</span>)
+<span class="ansi-green-fg">   1046</span> encoding <span style="color: rgb(98,98,98)">=</span> io<span style="color: rgb(98,98,98)">.</span>text_encoding(encoding)
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1047</span> <span class="ansi-bold" style="color: rgb(0,135,0)">with</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">'</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">w</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">newline</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">newline</span><span class="ansi-yellow-bg">)</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> f:
+<span class="ansi-green-fg">   1048</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> f<span style="color: rgb(98,98,98)">.</span>write(data)
+
+File <span class="ansi-green-intense-fg ansi-bold">C:\Program Files\Python312\Lib\pathlib.py:1013</span>, in <span class="ansi-cyan-fg">Path.open</span><span class="ansi-blue-intense-fg ansi-bold">(self, mode, buffering, encoding, errors, newline)</span>
+<span class="ansi-green-fg">   1011</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">b</span><span style="color: rgb(175,0,0)">"</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> mode:
+<span class="ansi-green-fg">   1012</span>     encoding <span style="color: rgb(98,98,98)">=</span> io<span style="color: rgb(98,98,98)">.</span>text_encoding(encoding)
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1013</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">io</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">buffering</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">newline</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">PermissionError</span>: [Errno 13] Permission denied: 'iframe_figures\\figure_18.html'</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">PermissionError</span>                           Traceback (most recent call last)
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\IPython\core\formatters.py:1036</span>, in <span class="ansi-cyan-fg">MimeBundleFormatter.__call__</span><span class="ansi-blue-intense-fg ansi-bold">(self, obj, include, exclude)</span>
+<span class="ansi-green-fg">   1033</span>     method <span style="color: rgb(98,98,98)">=</span> get_real_method(obj, <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>print_method)
+<span class="ansi-green-fg">   1035</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> method <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1036</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">include</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">include</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">exclude</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">exclude</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   1037</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">   1038</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\basedatatypes.py:824</span>, in <span class="ansi-cyan-fg">BaseFigure._repr_mimebundle_</span><span class="ansi-blue-intense-fg ansi-bold">(self, include, exclude, validate, **kwargs)</span>
+<span class="ansi-green-fg">    821</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,0,255)">plotly</span><span class="ansi-bold" style="color: rgb(0,0,255)">.</span><span class="ansi-bold" style="color: rgb(0,0,255)">io</span><span class="ansi-bold" style="color: rgb(0,0,255)">.</span><span class="ansi-bold" style="color: rgb(0,0,255)">_utils</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> validate_coerce_fig_to_dict
+<span class="ansi-green-fg">    823</span> fig_dict <span style="color: rgb(98,98,98)">=</span> validate_coerce_fig_to_dict(<span style="color: rgb(0,135,0)">self</span>, validate)
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 824</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">renderers</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_build_mime_bundle</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fig_dict</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">renderer_str</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\io\_renderers.py:325</span>, in <span class="ansi-cyan-fg">RenderersConfig._build_mime_bundle</span><span class="ansi-blue-intense-fg ansi-bold">(self, fig_dict, renderers_string, **kwargs)</span>
+<span class="ansi-green-fg">    322</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">hasattr</span>(renderer, k):
+<span class="ansi-green-fg">    323</span>                 <span style="color: rgb(0,135,0)">setattr</span>(renderer, k, v)
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 325</span>         bundle<span style="color: rgb(98,98,98)">.</span>update(<span class="ansi-yellow-bg">renderer</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">to_mimebundle</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fig_dict</span><span class="ansi-yellow-bg">)</span>)
+<span class="ansi-green-fg">    327</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> bundle
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\io\_base_renderers.py:547</span>, in <span class="ansi-cyan-fg">IFrameRenderer.to_mimebundle</span><span class="ansi-blue-intense-fg ansi-bold">(self, fig_dict)</span>
+<span class="ansi-green-fg">    544</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> isdir(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>html_directory):
+<span class="ansi-green-fg">    545</span>                 <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 547</span>         <span class="ansi-yellow-bg">write_html</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    548</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">fig_dict</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    549</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    550</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">config</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">config</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    551</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">auto_play</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">auto_play</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    552</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">include_plotlyjs</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">include_plotlyjs</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    553</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">include_mathjax</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">cdn</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    554</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">auto_open</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">False</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    555</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">post_script</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">post_script</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    556</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">animation_opts</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">animation_opts</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    557</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">default_width</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">100</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">%</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    558</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">default_height</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">525</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    559</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">validate</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">False</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    560</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    562</span>         <span style="color: rgb(95,135,135)"># Build IFrame</span>
+<span class="ansi-green-fg">    563</span>         iframe_html <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">"""</span><span class="ansi-bold" style="color: rgb(175,95,0)">\</span>
+<span class="ansi-green-fg">    564</span> <span style="color: rgb(175,0,0)">&lt;iframe</span>
+<span class="ansi-green-fg">    565</span> <span style="color: rgb(175,0,0)">    scrolling=</span><span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">no</span><span style="color: rgb(175,0,0)">"</span>
+<span class="ansi-green-intense-fg ansi-bold">   (...)</span>
+<span class="ansi-green-fg">    573</span>             width<span style="color: rgb(98,98,98)">=</span>iframe_width, height<span style="color: rgb(98,98,98)">=</span>iframe_height, src<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>build_url(filename)
+<span class="ansi-green-fg">    574</span>         )
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\io\_html.py:509</span>, in <span class="ansi-cyan-fg">write_html</span><span class="ansi-blue-intense-fg ansi-bold">(fig, file, config, auto_play, include_plotlyjs, include_mathjax, post_script, full_html, animation_opts, validate, default_width, default_height, auto_open, div_id)</span>
+<span class="ansi-green-fg">    506</span> <span style="color: rgb(95,135,135)"># Write HTML string</span>
+<span class="ansi-green-fg">    507</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> path <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">    508</span>     <span style="color: rgb(95,135,135)"># To use a different file encoding, pass a file descriptor</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 509</span>     <span class="ansi-yellow-bg">path</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">write_text</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">html_str</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">utf-8</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    510</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">    511</span>     file<span style="color: rgb(98,98,98)">.</span>write(html_str)
+
+File <span class="ansi-green-intense-fg ansi-bold">C:\Program Files\Python312\Lib\pathlib.py:1047</span>, in <span class="ansi-cyan-fg">Path.write_text</span><span class="ansi-blue-intense-fg ansi-bold">(self, data, encoding, errors, newline)</span>
+<span class="ansi-green-fg">   1044</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">TypeError</span>(<span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">data must be str, not </span><span class="ansi-bold" style="color: rgb(175,95,135)">%s</span><span style="color: rgb(175,0,0)">'</span> <span style="color: rgb(98,98,98)">%</span>
+<span class="ansi-green-fg">   1045</span>                     data<span style="color: rgb(98,98,98)">.</span><span style="color: rgb(0,0,135)">__class__</span><span style="color: rgb(98,98,98)">.</span><span style="color: rgb(0,0,135)">__name__</span>)
+<span class="ansi-green-fg">   1046</span> encoding <span style="color: rgb(98,98,98)">=</span> io<span style="color: rgb(98,98,98)">.</span>text_encoding(encoding)
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1047</span> <span class="ansi-bold" style="color: rgb(0,135,0)">with</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">'</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">w</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">newline</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">newline</span><span class="ansi-yellow-bg">)</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> f:
+<span class="ansi-green-fg">   1048</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> f<span style="color: rgb(98,98,98)">.</span>write(data)
+
+File <span class="ansi-green-intense-fg ansi-bold">C:\Program Files\Python312\Lib\pathlib.py:1013</span>, in <span class="ansi-cyan-fg">Path.open</span><span class="ansi-blue-intense-fg ansi-bold">(self, mode, buffering, encoding, errors, newline)</span>
+<span class="ansi-green-fg">   1011</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">b</span><span style="color: rgb(175,0,0)">"</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> mode:
+<span class="ansi-green-fg">   1012</span>     encoding <span style="color: rgb(98,98,98)">=</span> io<span style="color: rgb(98,98,98)">.</span>text_encoding(encoding)
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1013</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">io</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">buffering</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">newline</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">PermissionError</span>: [Errno 13] Permission denied: 'iframe_figures\\figure_18.html'</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">PermissionError</span>                           Traceback (most recent call last)
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\IPython\core\formatters.py:406</span>, in <span class="ansi-cyan-fg">BaseFormatter.__call__</span><span class="ansi-blue-intense-fg ansi-bold">(self, obj)</span>
+<span class="ansi-green-fg">    404</span>     method <span style="color: rgb(98,98,98)">=</span> get_real_method(obj, <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>print_method)
+<span class="ansi-green-fg">    405</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> method <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 406</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">method</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    407</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-fg">    408</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\basedatatypes.py:807</span>, in <span class="ansi-cyan-fg">BaseFigure._repr_html_</span><span class="ansi-blue-intense-fg ansi-bold">(self)</span>
+<span class="ansi-green-fg">    803</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span style="color: rgb(0,0,255)">_repr_html_</span>(<span style="color: rgb(0,135,0)">self</span>):
+<span class="ansi-green-fg">    804</span> <span style="color: rgb(188,188,188)">    </span><span style="color: rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg">    805</span> <span style="color: rgb(175,0,0)">    Customize html representation</span>
+<span class="ansi-green-fg">    806</span> <span style="color: rgb(175,0,0)">    """</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 807</span>     bundle <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_repr_mimebundle_</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    808</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">text/html</span><span style="color: rgb(175,0,0)">"</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> bundle:
+<span class="ansi-green-fg">    809</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> bundle[<span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">text/html</span><span style="color: rgb(175,0,0)">"</span>]
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\basedatatypes.py:824</span>, in <span class="ansi-cyan-fg">BaseFigure._repr_mimebundle_</span><span class="ansi-blue-intense-fg ansi-bold">(self, include, exclude, validate, **kwargs)</span>
+<span class="ansi-green-fg">    821</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,0,255)">plotly</span><span class="ansi-bold" style="color: rgb(0,0,255)">.</span><span class="ansi-bold" style="color: rgb(0,0,255)">io</span><span class="ansi-bold" style="color: rgb(0,0,255)">.</span><span class="ansi-bold" style="color: rgb(0,0,255)">_utils</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> validate_coerce_fig_to_dict
+<span class="ansi-green-fg">    823</span> fig_dict <span style="color: rgb(98,98,98)">=</span> validate_coerce_fig_to_dict(<span style="color: rgb(0,135,0)">self</span>, validate)
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 824</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">renderers</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_build_mime_bundle</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fig_dict</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">renderer_str</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\io\_renderers.py:325</span>, in <span class="ansi-cyan-fg">RenderersConfig._build_mime_bundle</span><span class="ansi-blue-intense-fg ansi-bold">(self, fig_dict, renderers_string, **kwargs)</span>
+<span class="ansi-green-fg">    322</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">hasattr</span>(renderer, k):
+<span class="ansi-green-fg">    323</span>                 <span style="color: rgb(0,135,0)">setattr</span>(renderer, k, v)
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 325</span>         bundle<span style="color: rgb(98,98,98)">.</span>update(<span class="ansi-yellow-bg">renderer</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">to_mimebundle</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fig_dict</span><span class="ansi-yellow-bg">)</span>)
+<span class="ansi-green-fg">    327</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> bundle
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\io\_base_renderers.py:547</span>, in <span class="ansi-cyan-fg">IFrameRenderer.to_mimebundle</span><span class="ansi-blue-intense-fg ansi-bold">(self, fig_dict)</span>
+<span class="ansi-green-fg">    544</span>             <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> isdir(<span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>html_directory):
+<span class="ansi-green-fg">    545</span>                 <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 547</span>         <span class="ansi-yellow-bg">write_html</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    548</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">fig_dict</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    549</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">filename</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    550</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">config</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">config</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    551</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">auto_play</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">auto_play</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    552</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">include_plotlyjs</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">include_plotlyjs</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    553</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">include_mathjax</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">cdn</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    554</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">auto_open</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">False</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    555</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">post_script</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">post_script</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    556</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">animation_opts</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">animation_opts</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    557</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">default_width</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">100</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">%</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    558</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">default_height</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">525</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    559</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">validate</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">False</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    560</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    562</span>         <span style="color: rgb(95,135,135)"># Build IFrame</span>
+<span class="ansi-green-fg">    563</span>         iframe_html <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">"""</span><span class="ansi-bold" style="color: rgb(175,95,0)">\</span>
+<span class="ansi-green-fg">    564</span> <span style="color: rgb(175,0,0)">&lt;iframe</span>
+<span class="ansi-green-fg">    565</span> <span style="color: rgb(175,0,0)">    scrolling=</span><span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">no</span><span style="color: rgb(175,0,0)">"</span>
+<span class="ansi-green-intense-fg ansi-bold">   (...)</span>
+<span class="ansi-green-fg">    573</span>             width<span style="color: rgb(98,98,98)">=</span>iframe_width, height<span style="color: rgb(98,98,98)">=</span>iframe_height, src<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>build_url(filename)
+<span class="ansi-green-fg">    574</span>         )
+
+File <span class="ansi-green-intense-fg ansi-bold">~\OneDrive\Documentos\APPS\SCORE\venv\Lib\site-packages\plotly\io\_html.py:509</span>, in <span class="ansi-cyan-fg">write_html</span><span class="ansi-blue-intense-fg ansi-bold">(fig, file, config, auto_play, include_plotlyjs, include_mathjax, post_script, full_html, animation_opts, validate, default_width, default_height, auto_open, div_id)</span>
+<span class="ansi-green-fg">    506</span> <span style="color: rgb(95,135,135)"># Write HTML string</span>
+<span class="ansi-green-fg">    507</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> path <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">    508</span>     <span style="color: rgb(95,135,135)"># To use a different file encoding, pass a file descriptor</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 509</span>     <span class="ansi-yellow-bg">path</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">write_text</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">html_str</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">utf-8</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    510</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">    511</span>     file<span style="color: rgb(98,98,98)">.</span>write(html_str)
+
+File <span class="ansi-green-intense-fg ansi-bold">C:\Program Files\Python312\Lib\pathlib.py:1047</span>, in <span class="ansi-cyan-fg">Path.write_text</span><span class="ansi-blue-intense-fg ansi-bold">(self, data, encoding, errors, newline)</span>
+<span class="ansi-green-fg">   1044</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">TypeError</span>(<span style="color: rgb(175,0,0)">'</span><span style="color: rgb(175,0,0)">data must be str, not </span><span class="ansi-bold" style="color: rgb(175,95,135)">%s</span><span style="color: rgb(175,0,0)">'</span> <span style="color: rgb(98,98,98)">%</span>
+<span class="ansi-green-fg">   1045</span>                     data<span style="color: rgb(98,98,98)">.</span><span style="color: rgb(0,0,135)">__class__</span><span style="color: rgb(98,98,98)">.</span><span style="color: rgb(0,0,135)">__name__</span>)
+<span class="ansi-green-fg">   1046</span> encoding <span style="color: rgb(98,98,98)">=</span> io<span style="color: rgb(98,98,98)">.</span>text_encoding(encoding)
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1047</span> <span class="ansi-bold" style="color: rgb(0,135,0)">with</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">'</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">w</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">newline</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">newline</span><span class="ansi-yellow-bg">)</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> f:
+<span class="ansi-green-fg">   1048</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> f<span style="color: rgb(98,98,98)">.</span>write(data)
+
+File <span class="ansi-green-intense-fg ansi-bold">C:\Program Files\Python312\Lib\pathlib.py:1013</span>, in <span class="ansi-cyan-fg">Path.open</span><span class="ansi-blue-intense-fg ansi-bold">(self, mode, buffering, encoding, errors, newline)</span>
+<span class="ansi-green-fg">   1011</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">b</span><span style="color: rgb(175,0,0)">"</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> mode:
+<span class="ansi-green-fg">   1012</span>     encoding <span style="color: rgb(98,98,98)">=</span> io<span style="color: rgb(98,98,98)">.</span>text_encoding(encoding)
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1013</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">io</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">open</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">buffering</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">newline</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">PermissionError</span>: [Errno 13] Permission denied: 'iframe_figures\\figure_18.html'</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>Figure({
+    'data': [{'hovertemplate': 'Num_of_Loan=%{x}&lt;br&gt;Proportion (%)=%{y}&lt;br&gt;text=%{text}&lt;extra&gt;&lt;/extra&gt;',
+              'legendgroup': '',
+              'marker': {'color': 'skyblue', 'line': {'color': 'black', 'width': 1}, 'pattern': {'shape': ''}},
+              'name': '',
+              'orientation': 'v',
+              'showlegend': False,
+              'text': array(['15.75%', '15.71%', '15.46%', '11.41%', '11.13%', '8.14%', '7.68%',
+                             '7.53%', '3.86%', '3.34%'], dtype=object),
+              'textposition': 'outside',
+              'type': 'bar',
+              'x': {'bdata': 'AwIEAAEGBwUJCA==', 'dtype': 'i1'},
+              'xaxis': 'x',
+              'y': {'bdata': ('Gi/dJAaBL0AHgZVDi2wvQLbz/dR46S' ... 'EIrBweQAwCK4cW2Q5A5KWbxCCwCkA='),
+                    'dtype': 'f8'},
+              'yaxis': 'y'}],
+    'layout': {'barmode': 'relative',
+               'height': 500,
+               'legend': {'tracegroupgap': 0},
+               'template': '...',
+               'title': {'text': 'Distribution of Num_of_Loan (Normalized)'},
+               'width': 900,
+               'xaxis': {'anchor': 'y', 'domain': [0.0, 1.0], 'tickangle': -45, 'title': {'text': 'Num_of_Loan'}},
+               'yaxis': {'anchor': 'x', 'domain': [0.0, 1.0], 'title': {'text': 'Proportion (%)'}}}
+})</pre>
 </div>
 </div>
 </div>
@@ -8297,7 +8613,7 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_19.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_20.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -8391,7 +8707,7 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_21.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_22.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -8486,7 +8802,7 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_23.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_24.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -8532,19 +8848,19 @@ Filas Duplicadas: 0
 </thead>
 <tbody>
 <tr>
-<th>Num_of_Delayed_Payment</th>
+<th>Changed_Credit_Limit</th>
 <td>100,000</td>
-<td>13</td>
-<td>6</td>
-<td>0</td>
-<td>6</td>
+<td>10</td>
+<td>7</td>
+<td>-6</td>
+<td>3</td>
+<td>5</td>
 <td>9</td>
-<td>14</td>
-<td>18</td>
-<td>21</td>
-<td>23</td>
-<td>25</td>
-<td>28</td>
+<td>15</td>
+<td>19</td>
+<td>24</td>
+<td>29</td>
+<td>37</td>
 </tr>
 </tbody>
 </table>
@@ -8582,7 +8898,7 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_25.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_26.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -8614,7 +8930,7 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_26.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_27.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -8708,7 +9024,7 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_28.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_29.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -8802,7 +9118,7 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_30.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_31.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -8897,7 +9213,7 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_32.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_33.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -8929,7 +9245,7 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_33.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_34.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -9025,7 +9341,7 @@ Filas Duplicadas: 0
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_35.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="520" scrolling="no" src="iframe_figures/figure_36.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -9121,7 +9437,7 @@ podría corroborar en el análisis bivariado.</p>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_37.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_38.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -9154,7 +9470,7 @@ podría corroborar en el análisis bivariado.</p>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_38.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_39.html" width="920px"></iframe>
 </div>
 </div>
 </div>
@@ -9257,7 +9573,7 @@ no considerar Last_Loan_5 en adelante</p>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_40.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_41.html" width="920px"></iframe>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9269,7 +9585,7 @@ no considerar Last_Loan_5 en adelante</p>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_40.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_41.html" width="920px"></iframe>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9281,7 +9597,7 @@ no considerar Last_Loan_5 en adelante</p>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_40.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_41.html" width="920px"></iframe>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9293,7 +9609,7 @@ no considerar Last_Loan_5 en adelante</p>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_40.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_41.html" width="920px"></iframe>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9305,7 +9621,7 @@ no considerar Last_Loan_5 en adelante</p>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_40.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_41.html" width="920px"></iframe>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9317,7 +9633,7 @@ no considerar Last_Loan_5 en adelante</p>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_40.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_41.html" width="920px"></iframe>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9329,7 +9645,7 @@ no considerar Last_Loan_5 en adelante</p>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_40.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_41.html" width="920px"></iframe>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9341,7 +9657,7 @@ no considerar Last_Loan_5 en adelante</p>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_40.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_41.html" width="920px"></iframe>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -9353,7 +9669,7 @@ no considerar Last_Loan_5 en adelante</p>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_40.html" width="920px"></iframe>
+<iframe allowfullscreen="" frameborder="0" height="620" scrolling="no" src="iframe_figures/figure_41.html" width="920px"></iframe>
 </div>
 </div>
 <div class="jp-OutputArea-child">
