@@ -35,44 +35,44 @@ Actualmente, el proyecto NO tiene un flujo de ejecución definido. En su lugar, 
 
 🚀 Cómo Usar Este Repositorio
 
-1️⃣ Clonar el repositorio:
+    1️⃣ Clonar el repositorio:
 
-git clone https://github.com/adoljc87/SCORE.git
+    git clone https://github.com/adoljc87/SCORE.git
 
-cd SCORE
+    cd SCORE
 
-2️⃣ Crear y activar un entorno virtual:
+    2️⃣ Crear y activar un entorno virtual:
 
-python -m venv venv
-venv\Scripts\activate  # En Mac/Linux: source venv/bin/activate
+    python -m venv venv
+    venv\Scripts\activate  # En Mac/Linux: source venv/bin/activate
 
-3️⃣ Instalar dependencias:
+    3️⃣ Instalar dependencias:
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
-4️⃣ Ejecutar Jupyter Notebook:
+    4️⃣ Ejecutar Jupyter Notebook:
 
-jupyter notebook
+    jupyter notebook
 
-5️⃣ Explorar los notebooks en notebooks/.
+    5️⃣ Explorar los notebooks en notebooks/.
 
-📝 Notebooks Disponibles
+        📝 Notebooks Disponibles
 
-✅ Análisis Univariado: Explora cada variable de forma individual.
-🔄 Análisis Bivariado: En proceso de desarrollo.
-⏳ Análisis Multivariado: Aún no iniciado.
+        ✅ Análisis Univariado: Explora cada variable de forma individual.
+        🔄 Análisis Bivariado: En proceso de desarrollo.
+        ⏳ Análisis Multivariado: Aún no iniciado.
 
 
 📊 Generación del HTML del Análisis Univariado
 
 Para generar un archivo HTML con los resultados:
 
-1️⃣ Activa el entorno virtual y navega a la carpeta de análisis univariado:
+    1️⃣ Activa el entorno virtual y navega a la carpeta de análisis univariado:
 
-2️⃣ Ejecuta el notebook y conviértelo a HTML:
+    2️⃣ Ejecuta el notebook y conviértelo a HTML:
 
-jupyter nbconvert --to html --execute --no-input "24_AnálisisUnivariado.ipynb"
+        jupyter nbconvert --to html --execute --no-input "24_AnálisisUnivariado.ipynb"
 
-El archivo HTML generado permitirá visualizar los resultados sin necesidad de ejecutar Jupyter Notebook.
+        El archivo HTML generado permitirá visualizar los resultados sin necesidad de ejecutar Jupyter Notebook.
 
 📌 IMPORTANTE: No hay un main.py, por lo que cada análisis debe ejecutarse desde su respectivo notebook.
